@@ -23,10 +23,12 @@ jobs:
         run: flake8 formation_indus_ds_avancee
       - name: Run Vulture
         run: vulture formation_indus_ds_avancee scripts --min-confidence 100
+  
   qualite:
     runs-on: ubuntu-latest
     steps:
-      needs: build
+      needs:
+        - build
       - uses: actions/checkout@v3
         - name: Set up Python ${{ matrix.python-version }}
           uses: actions/setup-python@v4
